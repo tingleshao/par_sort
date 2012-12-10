@@ -1,0 +1,427 @@
+BL51 BANKED LINKER/LOCATER V6.05              12/06/2011  12:45:45  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.05, INVOKED BY:
+C:\SILABS\MCU\IDEFILES\C51\BIN\BL51.EXE C:\Users\Vince\EE4144_lab_projects\Sor
+>> t\PSort.obj, C:\Users\Vince\EE4144_lab_projects\Sort\TS_vInterface_Keil.lib
+>>  TO C:\Users\Vince\EE4144_lab_projects\Sort\PSort RS (256) PL (68) PW (78)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  C:\Users\Vince\EE4144_lab_projects\Sort\PSort.obj (PSORT)
+  C:\Users\Vince\EE4144_lab_projects\Sort\TS_vInterface_Keil.lib (TS_VINTERFAC
+>> E)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ILDPTR)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ILDOPTR)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ISTPTR)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ISTOPTR)
+
+
+LINK MAP OF MODULE:  C:\Users\Vince\EE4144_lab_projects\Sort\PSort (PSORT)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0024H     UNIT         _DATA_GROUP_
+            IDATA   002CH     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     0BB8H     UNIT         _XDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0283H     UNIT         ?PR?MAIN?PSORT
+            CODE    0A83H     01B7H     UNIT         ?PR?_MERGE?PSORT
+            CODE    0C3AH     00D8H     UNIT         ?PR?_BUBBLE_SORT?PSORT
+            CODE    0D12H     00AFH     UNIT         ?C?LIB_CODE
+            CODE    0DC1H     004AH     UNIT         ?PR?SILABSINIT020?TS_VINT
+>> ERFACE
+            CODE    0E0BH     0047H     UNIT         ?PR?RECIEVE_DATA_MASTER?P
+>> SORT
+            CODE    0E52H     0040H     UNIT         ?PR?_SEND_DATA_MASTER?PSO
+>> RT
+            CODE    0E92H     0020H     UNIT         ?PR?INIT_DEVICE?PSORT
+            CODE    0EB2H     0019H     UNIT         ?PR?_SCOPESAMPLEWRITE?TS_
+>> VINTERFACE
+            CODE    0ECBH     0011H     UNIT         ?PR?_LCD_DATAWRITE?TS_VIN
+>> TERFACE
+            CODE    0EDCH     000FH     UNIT         ?PR?_SCOPECLEARBUFFER?TS_
+>> VINTERFACE
+            CODE    0EEBH     000CH     UNIT         ?PR?_LCD_CONTROLWRITE?TS_
+>> VINTERFACE
+            CODE    0EF7H     000CH     UNIT         ?PR?_TERMINALWRITE?TS_VIN
+>> TERFACE
+            CODE    0F03H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0F0FH     000BH     UNIT         ?PR?UART_RECEIVECHAR?TS_V
+>> INTERFACE
+            CODE    0F1AH     0009H     UNIT         ?PR?TERMINALREAD?TS_VINTE
+>> RFACE
+            CODE    0F23H     0008H     UNIT         ?PR?_UART_SENDCHAR?TS_VIN
+>> TERFACE
+            CODE    0F2BH     0006H     UNIT         ?PR?LCD_CONTROLREAD?TS_VI
+BL51 BANKED LINKER/LOCATER V6.05            12/06/2011  12:45:45  PAGE 2
+
+
+>> NTERFACE
+            CODE    0F31H     0006H     UNIT         ?PR?LCD_DATAREAD?TS_VINTE
+>> RFACE
+            CODE    0F37H     0003H     UNIT         ?PR?LIB_VERSIONREAD?TS_VI
+>> NTERFACE
+
+
+
+OVERLAY MAP OF MODULE:   C:\Users\Vince\EE4144_lab_projects\Sort\PSort (PSORT)
+>> 
+
+
+SEGMENT                                       DATA_GROUP          XDATA_GROUP
+  +--> CALLED SEGMENT                       START    LENGTH     START    LENGT
+>> H
+------------------------------------------------------------------------------
+>> -
+?C_C51STARTUP                               -----    -----      -----    -----
+>> 
+  +--> ?PR?MAIN?PSORT
+
+?PR?MAIN?PSORT                              0008H    000FH      0000H    0BB8H
+>> 
+  +--> ?PR?INIT_DEVICE?PSORT
+  +--> ?PR?TERMINALREAD?TS_VINTERFACE
+  +--> ?PR?_SEND_DATA_MASTER?PSORT
+  +--> ?PR?_BUBBLE_SORT?PSORT
+  +--> ?PR?RECIEVE_DATA_MASTER?PSORT
+  +--> ?PR?_MERGE?PSORT
+  +--> ?PR?_TERMINALWRITE?TS_VINTERFACE
+
+?PR?INIT_DEVICE?PSORT                       -----    -----      -----    -----
+>> 
+  +--> ?PR?SILABSINIT020?TS_VINTERFACE
+
+?PR?TERMINALREAD?TS_VINTERFACE              -----    -----      -----    -----
+>> 
+  +--> ?PR?_UART_SENDCHAR?TS_VINTERFACE
+  +--> ?PR?UART_RECEIVECHAR?TS_VINTERFACE
+
+?PR?UART_RECEIVECHAR?TS_VINTERFACE          -----    -----      -----    -----
+>> 
+  +--> ?PR?_UART_SENDCHAR?TS_VINTERFACE
+
+?PR?_BUBBLE_SORT?PSORT                      0017H    0008H      -----    -----
+>> 
+
+?PR?_MERGE?PSORT                            0017H    0015H      -----    -----
+>> 
+
+?PR?_TERMINALWRITE?TS_VINTERFACE            -----    -----      -----    -----
+>> 
+  +--> ?PR?_UART_SENDCHAR?TS_VINTERFACE
+
+
+
+SYMBOL TABLE OF MODULE:  C:\Users\Vince\EE4144_lab_projects\Sort\PSort (PSORT)
+>> 
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        PSORT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:009DH         PUBLIC        SPI0CKR
+BL51 BANKED LINKER/LOCATER V6.05            12/06/2011  12:45:45  PAGE 3
+
+
+  D:00FFH         PUBLIC        WDTCN
+  B:0080H.6       PUBLIC        SEn
+  D:00A4H         PUBLIC        P0MDOUT
+  D:00A5H         PUBLIC        P1MDOUT
+  C:0A83H         PUBLIC        _merge
+  C:0C3AH         PUBLIC        _bubble_sort
+  B:00F8H.3       PUBLIC        TXBSY
+  D:00E1H         PUBLIC        XBR0
+  D:00E3H         PUBLIC        XBR2
+  C:0800H         PUBLIC        main
+  B:0090H.0       PUBLIC        RX
+  B:0090H.1       PUBLIC        TX
+  D:00F8H         PUBLIC        SPI0CN
+  C:0E52H         PUBLIC        _Send_Data_Master
+  B:00B0H.7       PUBLIC        flow
+  C:0E92H         PUBLIC        init_Device
+  C:0E0BH         PUBLIC        Recieve_Data_Master
+  D:009BH         PUBLIC        SPI0DAT
+  B:0080H.5       PUBLIC        MSet
+  -------         PROC          _BUBBLE_SORT
+  D:0001H         SYMBOL        iarray
+  D:0017H         SYMBOL        size
+  -------         DO            
+  D:0019H         SYMBOL        y
+  D:001BH         SYMBOL        holder
+  D:001DH         SYMBOL        swapped
+  -------         ENDDO         
+  C:0C3AH         LINE#         1
+  C:0C3EH         LINE#         2
+  C:0C3EH         LINE#         5
+  C:0C44H         LINE#         6
+  C:0C4DH         LINE#         7
+  C:0C52H         LINE#         8
+  C:0C6FH         LINE#         9
+  C:0CA4H         LINE#         10
+  C:0CBFH         LINE#         11
+  C:0CE9H         LINE#         12
+  C:0CFDH         LINE#         13
+  C:0D03H         LINE#         14
+  C:0D11H         LINE#         15
+  C:0D11H         LINE#         17
+  -------         ENDPROC       _BUBBLE_SORT
+  -------         PROC          _MERGE
+  D:0017H         SYMBOL        left
+  D:001AH         SYMBOL        right
+  D:001DH         SYMBOL        result
+  D:0020H         SYMBOL        left_size
+  D:0022H         SYMBOL        right_size
+  D:0024H         SYMBOL        total
+  -------         DO            
+  D:0026H         SYMBOL        x
+  D:0028H         SYMBOL        y
+  D:002AH         SYMBOL        i
+  -------         ENDDO         
+  C:0A83H         LINE#         1
+  C:0A89H         LINE#         2
+  C:0A89H         LINE#         4
+  C:0A8EH         LINE#         5
+  C:0A92H         LINE#         6
+  C:0A96H         LINE#         7
+  C:0AAEH         LINE#         8
+  C:0AAEH         LINE#         9
+  C:0ACCH         LINE#         10
+  C:0ACCH         LINE#         11
+  C:0ACCH         LINE#         12
+BL51 BANKED LINKER/LOCATER V6.05            12/06/2011  12:45:45  PAGE 4
+
+
+  C:0ACCH         LINE#         13
+  C:0B06H         LINE#         14
+  C:0B06H         LINE#         15
+  C:0B2FH         LINE#         16
+  C:0B37H         LINE#         17
+  C:0B39H         LINE#         19
+  C:0B39H         LINE#         20
+  C:0B68H         LINE#         21
+  C:0B70H         LINE#         22
+  C:0B70H         LINE#         23
+  C:0B7EH         LINE#         24
+  C:0B8AH         LINE#         25
+  C:0B8AH         LINE#         26
+  C:0BA5H         LINE#         27
+  C:0BA5H         LINE#         28
+  C:0BD4H         LINE#         29
+  C:0BDCH         LINE#         30
+  C:0BDCH         LINE#         31
+  C:0BDDH         LINE#         32
+  C:0BDDH         LINE#         33
+  C:0BE7H         LINE#         34
+  C:0BE7H         LINE#         35
+  C:0BF8H         LINE#         36
+  C:0BF8H         LINE#         37
+  C:0C27H         LINE#         38
+  C:0C2FH         LINE#         39
+  C:0C39H         LINE#         40
+  C:0C39H         LINE#         42
+  C:0C39H         LINE#         43
+  -------         ENDPROC       _MERGE
+  -------         PROC          INIT_DEVICE
+  C:0E92H         LINE#         17
+  C:0E92H         LINE#         20
+  C:0E95H         LINE#         21
+  C:0E98H         LINE#         23
+  C:0E9BH         LINE#         25
+  C:0E9EH         LINE#         26
+  C:0EA1H         LINE#         28
+  C:0EA4H         LINE#         29
+  C:0EA7H         LINE#         31
+  C:0EAAH         LINE#         32
+  C:0EADH         LINE#         34
+  C:0EAFH         LINE#         35
+  C:0EB1H         LINE#         36
+  -------         ENDPROC       INIT_DEVICE
+  -------         PROC          _SEND_DATA_MASTER
+  D:0006H         SYMBOL        va
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0E52H         LINE#         44
+  C:0E52H         LINE#         46
+  C:0E54H         LINE#         47
+  C:0E56H         LINE#         48
+  C:0E59H         LINE#         49
+  C:0E5BH         LINE#         50
+  C:0E69H         LINE#         51
+  C:0E6BH         LINE#         52
+  C:0E79H         LINE#         53
+  C:0E7CH         LINE#         54
+  C:0E7EH         LINE#         55
+  C:0E8CH         LINE#         56
+  C:0E8FH         LINE#         57
+  C:0E91H         LINE#         59
+  -------         ENDPROC       _SEND_DATA_MASTER
+BL51 BANKED LINKER/LOCATER V6.05            12/06/2011  12:45:45  PAGE 5
+
+
+  -------         PROC          RECIEVE_DATA_MASTER
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0006H         SYMBOL        va
+  D:0006H         SYMBOL        UDat
+  -------         ENDDO         
+  C:0E0BH         LINE#         63
+  C:0E0BH         LINE#         68
+  C:0E0DH         LINE#         69
+  C:0E10H         LINE#         70
+  C:0E13H         LINE#         71
+  C:0E15H         LINE#         72
+  C:0E17H         LINE#         73
+  C:0E25H         LINE#         74
+  C:0E27H         LINE#         75
+  C:0E35H         LINE#         76
+  C:0E38H         LINE#         77
+  C:0E3AH         LINE#         78
+  C:0E48H         LINE#         79
+  C:0E4BH         LINE#         80
+  C:0E4DH         LINE#         81
+  C:0E51H         LINE#         83
+  C:0E51H         LINE#         84
+  -------         ENDPROC       RECIEVE_DATA_MASTER
+  -------         PROC          MAIN
+  -------         DO            
+  X:0000H         SYMBOL        Dat1
+  X:03E8H         SYMBOL        Dat2
+  X:0708H         SYMBOL        Dat3
+  X:0AF0H         SYMBOL        Dat4
+  D:0008H         SYMBOL        tempdata
+  D:000AH         SYMBOL        i
+  D:000CH         SYMBOL        count
+  D:000EH         SYMBOL        pa
+  D:0001H         SYMBOL        pc
+  D:0011H         SYMBOL        d2
+  D:0001H         SYMBOL        d4
+  D:0014H         SYMBOL        d3
+  -------         ENDDO         
+  C:0800H         LINE#         96
+  C:0800H         LINE#         111
+  C:0803H         LINE#         116
+  C:080CH         LINE#         117
+  C:0811H         LINE#         118
+  C:081AH         LINE#         119
+  C:082AH         LINE#         120
+  C:082CH         LINE#         121
+  C:083BH         LINE#         122
+  C:084EH         LINE#         123
+  C:085BH         LINE#         124
+  C:0872H         LINE#         125
+  C:0885H         LINE#         126
+  C:0890H         LINE#         127
+  C:0890H         LINE#         128
+  C:0898H         LINE#         129
+  C:08A3H         LINE#         130
+  C:08C2H         LINE#         131
+  C:08C2H         LINE#         135
+  C:08C7H         LINE#         136
+  C:08CDH         LINE#         137
+  C:08D1H         LINE#         138
+  C:08D8H         LINE#         139
+  C:08E8H         LINE#         140
+  C:08F5H         LINE#         141
+  C:08FEH         LINE#         142
+BL51 BANKED LINKER/LOCATER V6.05            12/06/2011  12:45:45  PAGE 6
+
+
+  C:0911H         LINE#         143
+  C:0918H         LINE#         144
+  C:0920H         LINE#         145
+  C:0922H         LINE#         148
+  C:0935H         LINE#         149
+  C:0942H         LINE#         150
+  C:0955H         LINE#         154
+  C:095AH         LINE#         155
+  C:0960H         LINE#         156
+  C:096DH         LINE#         157
+  C:0974H         LINE#         158
+  C:0987H         LINE#         159
+  C:098FH         LINE#         160
+  C:09A2H         LINE#         161
+  C:09AAH         LINE#         162
+  C:09B1H         LINE#         163
+  C:09B3H         LINE#         167
+  C:09C6H         LINE#         168
+  C:09F3H         LINE#         169
+  C:0A06H         LINE#         173
+  C:0A0FH         LINE#         174
+  C:0A22H         LINE#         175
+  C:0A27H         LINE#         176
+  C:0A34H         LINE#         177
+  C:0A42H         LINE#         178
+  C:0A55H         LINE#         179
+  C:0A5AH         LINE#         180
+  C:0A6DH         LINE#         181
+  C:0A75H         LINE#         182
+  C:0A80H         LINE#         183
+  C:0A82H         LINE#         187
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        PSORT
+
+  -------         MODULE        ?C?ILDPTR
+  C:0D12H         PUBLIC        ?C?ILDPTR
+  -------         ENDMOD        ?C?ILDPTR
+
+  -------         MODULE        ?C?ILDOPTR
+  C:0D3DH         PUBLIC        ?C?ILDOPTR
+  -------         ENDMOD        ?C?ILDOPTR
+
+  -------         MODULE        ?C?ISTPTR
+  C:0D75H         PUBLIC        ?C?ISTPTR
+  -------         ENDMOD        ?C?ISTPTR
+
+  -------         MODULE        ?C?ISTOPTR
+  C:0D94H         PUBLIC        ?C?ISTOPTR
+  -------         ENDMOD        ?C?ISTOPTR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_CONTROLWRITE?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_CONTROLREAD?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_DATAWRITE?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_DATAREAD?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SCOPESAMPLEWRITE?TS_VINTERFACE
+
+BL51 BANKED LINKER/LOCATER V6.05            12/06/2011  12:45:45  PAGE 7
+
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SCOPECLEARBUFFER?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LIB_VERSIONREAD?TS_VINTERFACE
+
+******************************************************************************
+>> 
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 05B9H BYTE (71%) *
+>> 
+******************************************************************************
+>> 
+
+Program Size: data=45.0 xdata=3000 code=1853
+LINK/LOCATE RUN COMPLETE.  7 WARNING(S),  0 ERROR(S)

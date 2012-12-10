@@ -1,0 +1,225 @@
+C51 COMPILER V8.08   PSORT                                                                 12/06/2011 12:45:43 PAGE 1   
+
+
+C51 COMPILER V8.08, COMPILATION OF MODULE PSORT
+OBJECT MODULE PLACED IN PSort.OBJ
+COMPILER INVOKED BY: C:\SiLabs\MCU\IDEfiles\C51\BIN\c51.exe PSort.c DB OE BR INCDIR(C:\SiLabs\MCU\Inc)
+
+line level    source
+
+   1          #include <compiler_defs.h> 
+   2          #include <C8051F020_defs.h>
+   3          #include <TS_vInterface.h>
+   4          #include <bubble.h>
+   5          #include <merge.h>
+   6          
+   7          
+   8          SBIT (flow, SFR_P3, 7);
+   9          SBIT (MSet, SFR_P0, 5);
+  10          SBIT (SEn, SFR_P0, 6);
+  11          SBIT (RX, SFR_P1, 0);
+  12          SBIT (TX, SFR_P1, 1);
+  13          
+  14          //--Settings----------------------------------------------------------------------------------------------
+             ------------
+  15          
+  16          
+  17          void init_Device(void) {
+  18   1      
+  19   1      
+  20   1                              WDTCN = 0xDE;
+  21   1                              WDTCN = 0xAD;
+  22   1      
+  23   1                              SilabsInit020 ();
+  24   1                              
+  25   1                              SPI0CN    = 0x03;
+  26   1                      SPI0CKR   = 0x22;
+  27   1      
+  28   1                      P0MDOUT   = 0x54;
+  29   1                      P1MDOUT   = 0x02;
+  30   1      
+  31   1                      XBR0      = 0x06;
+  32   1                      XBR2      = 0x40;
+  33   1                              
+  34   1                              MSet = 1;
+  35   1                              SEn = 1;
+  36   1      }
+  37          
+  38          
+  39          
+  40          //--TXRX_for_Master---------------------------------------------------------------------------------------
+             ------------
+  41          
+  42          
+  43          
+  44          void Send_Data_Master(int va){
+  45   1              int i;
+  46   1              SEn = 1;
+  47   1              TX = 1;
+  48   1              while (RX == 0);
+  49   1              SEn = 0;
+  50   1              for (i = 0; i< 10; i++);
+  51   1              SPI0DAT = va;
+  52   1              for (i = 0; i< 10; i++);
+  53   1              while (TXBSY == 1);
+C51 COMPILER V8.08   PSORT                                                                 12/06/2011 12:45:43 PAGE 2   
+
+  54   1              SEn = 1;
+  55   1              for (i = 0; i< 10; i++);
+  56   1              while(RX == 1);
+  57   1              TX = 0;
+  58   1      
+  59   1      }
+  60          
+  61          
+  62          
+  63          int Recieve_Data_Master(void){
+  64   1              int i;
+  65   1              int va;
+  66   1              int UDat;
+  67   1      
+  68   1              SEn = 1;
+  69   1              UDat = 0x00;
+  70   1              while (RX == 0);
+  71   1              TX = 1;
+  72   1              SEn = 0;
+  73   1              for (i = 0; i< 10; i++);
+  74   1              SPI0DAT = UDat;
+  75   1              for (i = 0; i< 10; i++);
+  76   1              while (TXBSY == 1);
+  77   1              SEn = 1;
+  78   1              for (i = 0; i< 10; i++);
+  79   1              while(RX == 1);
+  80   1              TX = 0;
+  81   1              va = SPI0DAT;
+  82   1      
+  83   1      return(va);
+  84   1      }
+  85          
+  86          
+  87          
+  88          
+  89          
+  90          //--Main_Program------------------------------------------------------------------------------------------
+             -----------
+  91          
+  92          
+  93          
+  94          
+  95          
+  96          void main(void) {
+  97   1              int xdata Dat1[500];
+  98   1              int xdata Dat2[400];
+  99   1              int xdata Dat3[500];
+ 100   1              int xdata Dat4[100];
+ 101   1              int tempdata;
+ 102   1              int i;
+ 103   1              int count;
+ 104   1              int *pa;
+ 105   1      //      int *pb;
+ 106   1              int *pc;
+ 107   1              int *d2;
+ 108   1              int *d4;
+ 109   1              int *d3;
+ 110   1      
+ 111   1              init_Device();
+ 112   1      
+ 113   1      
+ 114   1      
+C51 COMPILER V8.08   PSORT                                                                 12/06/2011 12:45:43 PAGE 3   
+
+ 115   1              //Recieve Initial Data Set
+ 116   1              pa = Dat1;
+ 117   1              count = 0;
+ 118   1              d2 = Dat2;
+ 119   1              while(count <= 499) {
+ 120   2                      flow = 0;
+ 121   2                      *pa = TerminalRead();
+ 122   2                      for (i = 0; i< 10; i++);
+ 123   2                      if (count < 400){
+ 124   3                              *d2 = *pa;
+ 125   3                              for (i = 0; i< 10; i++);
+ 126   3                              *d2++;
+*** WARNING C275 IN LINE 126 OF PSORT.C: expression with possibly no effect
+ 127   3                      }
+ 128   2                      count++;
+ 129   2                      *pa++;
+*** WARNING C275 IN LINE 129 OF PSORT.C: expression with possibly no effect
+ 130   2                      for (i = 0; i< 10; i++);
+ 131   2              }
+ 132   1      
+ 133   1      
+ 134   1              //Store My Data and Send Slave Data to Slave
+ 135   1              count = 0;
+ 136   1              pc = Dat1;
+ 137   1              for ( i = 0; i < 400 ; i++){
+ 138   2                      *pc++ ;
+*** WARNING C275 IN LINE 138 OF PSORT.C: expression with possibly no effect
+ 139   2              }
+ 140   1              while(count <= 99) {
+ 141   2                      Send_Data_Master(*pc);
+ 142   2                      for (i = 0; i< 10; i++);
+ 143   2                      *pc++;
+*** WARNING C275 IN LINE 143 OF PSORT.C: expression with possibly no effect
+ 144   2                      count++;
+ 145   2              }
+ 146   1      
+ 147   1              //Bubble Sort My Data
+ 148   1              for (i = 0; i< 100; i++);
+ 149   1              bubble_sort(Dat2,400);
+ 150   1              for (i = 0; i< 100; i++);
+ 151   1      
+ 152   1      
+ 153   1              //Recieve and Store Slave Data
+ 154   1              count = 0;
+ 155   1              d4 = Dat4;
+ 156   1              while(count <= 99) {
+ 157   2                      tempdata = Recieve_Data_Master();
+ 158   2                      for (i = 0; i< 10; i++);
+ 159   2                      *d4 = tempdata;
+ 160   2                      for (i = 0; i< 10; i++);
+ 161   2                      count++;
+ 162   2                      *d4++;
+*** WARNING C275 IN LINE 162 OF PSORT.C: expression with possibly no effect
+ 163   2              }
+ 164   1      
+ 165   1      
+ 166   1              //Merge Sort Both Data Sets
+ 167   1              for (i = 0; i< 100; i++);
+ 168   1              merge(Dat2, Dat4, Dat3,400,100,500);
+ 169   1              for (i = 0; i< 100; i++);
+ 170   1      
+ 171   1      
+C51 COMPILER V8.08   PSORT                                                                 12/06/2011 12:45:43 PAGE 4   
+
+ 172   1              //Send Sorted Data Set
+ 173   1              d3 = Dat3;
+ 174   1              for (i = 0; i< 10; i++);
+ 175   1              count = 0;
+ 176   1              while(count <= 499) {
+ 177   2                      tempdata = *d3;
+ 178   2                      for (i = 0; i< 10; i++);
+ 179   2                      TerminalWrite(tempdata);
+ 180   2                      for (i = 0; i< 10; i++);
+ 181   2                      count++;
+ 182   2                      *d3++;
+*** WARNING C275 IN LINE 182 OF PSORT.C: expression with possibly no effect
+ 183   2              }
+ 184   1      
+ 185   1      
+ 186   1      
+ 187   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   1465    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    3000
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      44
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  6 WARNING(S),  0 ERROR(S)

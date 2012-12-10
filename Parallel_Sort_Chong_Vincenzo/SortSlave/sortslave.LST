@@ -1,0 +1,146 @@
+C51 COMPILER V8.08   SORTSLAVE                                                             12/05/2011 00:52:24 PAGE 1   
+
+
+C51 COMPILER V8.08, COMPILATION OF MODULE SORTSLAVE
+OBJECT MODULE PLACED IN sortslave.OBJ
+COMPILER INVOKED BY: C:\SiLabs\MCU\IDEfiles\C51\BIN\C51.exe sortslave.c DB OE BR INCDIR(C:\SiLabs\MCU\Inc)
+
+line level    source
+
+   1          #include <compiler_defs.h>
+   2          #include <C8051F020_defs.h>
+   3          #include <TS_vInterface.h>
+   4          #include <bubble.h>
+   5          
+   6          
+   7          SBIT (RX, SFR_P1, 0);
+   8          SBIT (TX, SFR_P1, 1);
+   9          
+  10          //--Settings------------------------------------------------------------------------
+  11          
+  12          void init_Device(void) {
+  13   1      
+  14   1                      WDTCN = 0xDE ; 
+  15   1                      WDTCN = 0xAD ;
+  16   1      
+  17   1                      SilabsInit020 () ;
+  18   1      
+  19   1                      SPI0CN    = 0x01; 
+  20   1              
+  21   1              P0MDOUT   = 0x08;
+  22   1              P1MDOUT   = 0x02;
+  23   1      
+  24   1              XBR0      = 0x06;
+  25   1              XBR2      = 0x40;
+  26   1                      
+  27   1      
+  28   1      }
+  29          
+  30          
+  31          //--TXRX_for_slave---------------------------------------------------------------------
+  32          
+  33          
+  34          int Recieve_Data_Slave(void){
+  35   1              int i;
+  36   1              int GG;
+  37   1      
+  38   1              while (RX == 0) ;
+  39   1              TX = 1;
+  40   1              while (SLVSEL == 0);
+  41   1              while(SLVSEL == 1);
+  42   1              for (i = 0; i < 10; i++);
+  43   1              GG = SPI0DAT;
+  44   1      
+  45   1              RXOVRN = 0;
+  46   1              SPIF = 0;
+  47   1              WCOL = 0;
+  48   1              TX = 0;
+  49   1      
+  50   1      return(GG);
+  51   1      
+  52   1      
+  53   1      }
+  54          
+  55          void Send_Data_Slave(int GG){
+C51 COMPILER V8.08   SORTSLAVE                                                             12/05/2011 00:52:24 PAGE 2   
+
+  56   1              int i;
+  57   1              for (i = 0; i < 10; i++);
+  58   1              SPI0DAT = GG;
+  59   1              for (i = 0; i < 10; i++);
+  60   1              TX = 1;
+  61   1              while (RX == 0) ;
+  62   1              while (SLVSEL == 0);
+  63   1              while(SLVSEL == 1);
+  64   1      
+  65   1              RXOVRN = 0;
+  66   1              SPIF = 0;
+  67   1              WCOL = 0;
+  68   1              TX = 0;
+  69   1      
+  70   1      }
+  71          
+  72          
+  73          //--Main_Program-----------------------------------------------------------------------
+  74          
+  75          void main(void) {
+  76   1              int pdata Dat1[100];
+  77   1              int *pa;
+  78   1              int *pb;
+  79   1              int count;
+  80   1              int FE;
+  81   1              int i;
+  82   1      
+  83   1              init_Device();
+  84   1              
+  85   1              //Recieve Data
+  86   1              pa = Dat1;
+  87   1              count = 0;
+  88   1              while (count <= 99){
+  89   2                      for (i = 0; i < 10; i++);
+  90   2                      *pa = Recieve_Data_Slave();
+  91   2                      for (i = 0; i < 10; i++);
+  92   2                      TerminalWrite(*pa);
+  93   2                      count++;
+  94   2                      *pa++;
+*** WARNING C275 IN LINE 94 OF SORTSLAVE.C: expression with possibly no effect
+  95   2              }
+  96   1      
+  97   1              //Bubble Sort
+  98   1              for (i = 0; i < 100; i++);
+  99   1              bubble_sort(Dat1,100);
+ 100   1              for (i = 0; i < 100; i++);
+ 101   1      
+ 102   1              //Send Data
+ 103   1              pb = Dat1;
+ 104   1              count = 0;
+ 105   1              while (count <= 99) {
+ 106   2                      for (i = 0; i < 10; i++);
+ 107   2                      FE = *pb;
+ 108   2                      for (i = 0; i < 10; i++);
+ 109   2                      TerminalWrite(FE);
+ 110   2                      for (i = 0; i < 10; i++);
+ 111   2                      Send_Data_Slave(FE);
+ 112   2                      for (i = 0; i < 10; i++);
+ 113   2                      count++;
+ 114   2                      *pb++;
+*** WARNING C275 IN LINE 114 OF SORTSLAVE.C: expression with possibly no effect
+ 115   2              }
+C51 COMPILER V8.08   SORTSLAVE                                                             12/05/2011 00:52:24 PAGE 3   
+
+ 116   1              
+ 117   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    649    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----     200
+   DATA SIZE        =   ----      20
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  2 WARNING(S),  0 ERROR(S)

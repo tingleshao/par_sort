@@ -1,0 +1,40 @@
+C51 COMPILER V8.08   BUBBLE                                                                12/04/2011 23:07:19 PAGE 1   
+
+
+C51 COMPILER V8.08, COMPILATION OF MODULE BUBBLE
+OBJECT MODULE PLACED IN bubble.OBJ
+COMPILER INVOKED BY: C:\SiLabs\MCU\IDEfiles\C51\BIN\c51.exe bubble.h DB OE BR INCDIR(C:\SiLabs\MCU\Inc)
+
+line level    source
+
+   1          int bubble_sort(int *iarray, int size)
+   2          {
+   3   1         int y;
+   4   1         int holder;
+   5   1         int swapped = 1;
+   6   1         while (swapped) {
+   7   2          swapped = 0;
+   8   2          for(y = 0; y < size-1; y++)
+   9   2            if(iarray[y] > iarray[y+1]) {
+  10   3              holder = iarray[y+1];
+  11   3              iarray[y+1] = iarray[y];
+  12   3              iarray[y] = holder;
+  13   3              swapped = 1;
+  14   3            }
+  15   2         }
+  16   1         return(iarray);
+  17   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    220    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       8
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

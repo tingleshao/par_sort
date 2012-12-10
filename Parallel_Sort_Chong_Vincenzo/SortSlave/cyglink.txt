@@ -1,0 +1,2 @@
+"C:\Documents and Settings\Chet\Desktop\SortSlave\sortslave.obj",
+"C:\Documents and Settings\Chet\Desktop\SortSlave\TS_vInterface_Keil.lib"  TO "C:\Documents and Settings\Chet\Desktop\SortSlave\SortSlave" RS(256) PL(68) PW(78) 

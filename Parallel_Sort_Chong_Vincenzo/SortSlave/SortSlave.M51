@@ -1,0 +1,315 @@
+BL51 BANKED LINKER/LOCATER V6.05              12/05/2011  00:45:39  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.05, INVOKED BY:
+C:\SILABS\MCU\IDEFILES\C51\BIN\BL51.EXE C:\Documents and Settings\Chet\Desktop
+>> \SortSlave\sortslave.obj, C:\Documents and Settings\Chet\Desktop\SortSlave\
+>> TS_vInterface_Keil.lib TO C:\Documents and Settings\Chet\Desktop\SortSlave\
+>> SortSlave RS (256) PL (68) PW (78)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  C:\Documents and Settings\Chet\Desktop\SortSlave\sortslave.obj (SORTSLAVE)
+  C:\Documents and Settings\Chet\Desktop\SortSlave\TS_vInterface_Keil.lib (TS_
+>> VINTERFACE)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ILDPTR)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ILDOPTR)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ISTPTR)
+  C:\SILABS\MCU\IDEFILES\C51\LIB\C51S.LIB (?C?ISTOPTR)
+
+
+LINK MAP OF MODULE:  C:\Documents and Settings\Chet\Desktop\SortSlave\SortSlav
+>> e (SORTSLAVE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0014H     UNIT         _DATA_GROUP_
+            IDATA   001CH     0001H     UNIT         ?STACK
+
+            * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
+            XDATA   0000H     00C8H     INPAGE       _PDATA_GROUP_
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     07FDH                  *** GAP ***
+            CODE    0800H     0140H     UNIT         ?PR?MAIN?SORTSLAVE
+            CODE    0940H     00D8H     UNIT         ?PR?_BUBBLE_SORT?SORTSLAV
+>> E
+            CODE    0A18H     00AFH     UNIT         ?C?LIB_CODE
+            CODE    0AC7H     004AH     UNIT         ?PR?SILABSINIT020?TS_VINT
+>> ERFACE
+            CODE    0B11H     0032H     UNIT         ?PR?_SEND_DATA_SLAVE?SORT
+>> SLAVE
+            CODE    0B43H     0026H     UNIT         ?PR?RECIEVE_DATA_SLAVE?SO
+>> RTSLAVE
+            CODE    0B69H     0019H     UNIT         ?PR?INIT_DEVICE?SORTSLAVE
+>> 
+            CODE    0B82H     0019H     UNIT         ?PR?_SCOPESAMPLEWRITE?TS_
+>> VINTERFACE
+            CODE    0B9BH     0011H     UNIT         ?PR?_LCD_DATAWRITE?TS_VIN
+>> TERFACE
+            CODE    0BACH     000FH     UNIT         ?PR?_SCOPECLEARBUFFER?TS_
+>> VINTERFACE
+            CODE    0BBBH     000CH     UNIT         ?PR?_LCD_CONTROLWRITE?TS_
+>> VINTERFACE
+            CODE    0BC7H     000CH     UNIT         ?PR?_TERMINALWRITE?TS_VIN
+>> TERFACE
+            CODE    0BD3H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0BDFH     000BH     UNIT         ?PR?UART_RECEIVECHAR?TS_V
+>> INTERFACE
+            CODE    0BEAH     0009H     UNIT         ?PR?TERMINALREAD?TS_VINTE
+>> RFACE
+BL51 BANKED LINKER/LOCATER V6.05            12/05/2011  00:45:39  PAGE 2
+
+
+            CODE    0BF3H     0008H     UNIT         ?PR?_UART_SENDCHAR?TS_VIN
+>> TERFACE
+            CODE    0BFBH     0006H     UNIT         ?PR?LCD_CONTROLREAD?TS_VI
+>> NTERFACE
+            CODE    0C01H     0006H     UNIT         ?PR?LCD_DATAREAD?TS_VINTE
+>> RFACE
+            CODE    0C07H     0003H     UNIT         ?PR?LIB_VERSIONREAD?TS_VI
+>> NTERFACE
+
+
+
+OVERLAY MAP OF MODULE:   C:\Documents and Settings\Chet\Desktop\SortSlave\Sort
+>> Slave (SORTSLAVE)
+
+
+SEGMENT                                       DATA_GROUP          PDATA_GROUP
+  +--> CALLED SEGMENT                       START    LENGTH     START    LENGT
+>> H
+------------------------------------------------------------------------------
+>> -
+?C_C51STARTUP                               -----    -----      -----    -----
+>> 
+  +--> ?PR?MAIN?SORTSLAVE
+
+?PR?MAIN?SORTSLAVE                          0008H    000CH      0000H    00C8H
+>> 
+  +--> ?PR?INIT_DEVICE?SORTSLAVE
+  +--> ?PR?RECIEVE_DATA_SLAVE?SORTSLAVE
+  +--> ?PR?_TERMINALWRITE?TS_VINTERFACE
+  +--> ?PR?_BUBBLE_SORT?SORTSLAVE
+  +--> ?PR?_SEND_DATA_SLAVE?SORTSLAVE
+
+?PR?INIT_DEVICE?SORTSLAVE                   -----    -----      -----    -----
+>> 
+  +--> ?PR?SILABSINIT020?TS_VINTERFACE
+
+?PR?_TERMINALWRITE?TS_VINTERFACE            -----    -----      -----    -----
+>> 
+  +--> ?PR?_UART_SENDCHAR?TS_VINTERFACE
+
+?PR?_BUBBLE_SORT?SORTSLAVE                  0014H    0008H      -----    -----
+>> 
+
+
+
+SYMBOL TABLE OF MODULE:  C:\Documents and Settings\Chet\Desktop\SortSlave\Sort
+>> Slave (SORTSLAVE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        SORTSLAVE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00FFH         PUBLIC        WDTCN
+  C:0B43H         PUBLIC        Recieve_Data_Slave
+  D:00A4H         PUBLIC        P0MDOUT
+  D:00A5H         PUBLIC        P1MDOUT
+  C:0940H         PUBLIC        _bubble_sort
+  D:00E1H         PUBLIC        XBR0
+  D:00E3H         PUBLIC        XBR2
+  C:0800H         PUBLIC        main
+  B:0090H.0       PUBLIC        RX
+  B:0090H.1       PUBLIC        TX
+  D:00F8H         PUBLIC        SPI0CN
+  B:00F8H.7       PUBLIC        SPIF
+BL51 BANKED LINKER/LOCATER V6.05            12/05/2011  00:45:39  PAGE 3
+
+
+  B:00F8H.6       PUBLIC        WCOL
+  C:0B11H         PUBLIC        _Send_Data_Slave
+  B:00F8H.2       PUBLIC        SLVSEL
+  C:0B69H         PUBLIC        init_Device
+  B:00F8H.4       PUBLIC        RXOVRN
+  D:009BH         PUBLIC        SPI0DAT
+  -------         PROC          _BUBBLE_SORT
+  D:0001H         SYMBOL        iarray
+  D:0014H         SYMBOL        size
+  -------         DO            
+  D:0016H         SYMBOL        y
+  D:0018H         SYMBOL        holder
+  D:001AH         SYMBOL        swapped
+  -------         ENDDO         
+  C:0940H         LINE#         1
+  C:0944H         LINE#         2
+  C:0944H         LINE#         5
+  C:094AH         LINE#         6
+  C:0953H         LINE#         7
+  C:0958H         LINE#         8
+  C:0975H         LINE#         9
+  C:09AAH         LINE#         10
+  C:09C5H         LINE#         11
+  C:09EFH         LINE#         12
+  C:0A03H         LINE#         13
+  C:0A09H         LINE#         14
+  C:0A17H         LINE#         15
+  C:0A17H         LINE#         17
+  -------         ENDPROC       _BUBBLE_SORT
+  -------         PROC          INIT_DEVICE
+  C:0B69H         LINE#         12
+  C:0B69H         LINE#         14
+  C:0B6CH         LINE#         15
+  C:0B6FH         LINE#         17
+  C:0B72H         LINE#         19
+  C:0B75H         LINE#         21
+  C:0B78H         LINE#         22
+  C:0B7BH         LINE#         24
+  C:0B7EH         LINE#         25
+  C:0B81H         LINE#         28
+  -------         ENDPROC       INIT_DEVICE
+  -------         PROC          RECIEVE_DATA_SLAVE
+  -------         DO            
+  D:0006H         SYMBOL        i
+  D:0006H         SYMBOL        GG
+  -------         ENDDO         
+  C:0B43H         LINE#         34
+  C:0B43H         LINE#         38
+  C:0B46H         LINE#         39
+  C:0B48H         LINE#         40
+  C:0B4BH         LINE#         41
+  C:0B4EH         LINE#         42
+  C:0B5CH         LINE#         43
+  C:0B60H         LINE#         45
+  C:0B62H         LINE#         46
+  C:0B64H         LINE#         47
+  C:0B66H         LINE#         48
+  C:0B68H         LINE#         50
+  C:0B68H         LINE#         53
+  -------         ENDPROC       RECIEVE_DATA_SLAVE
+  -------         PROC          _SEND_DATA_SLAVE
+  D:0006H         SYMBOL        GG
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+BL51 BANKED LINKER/LOCATER V6.05            12/05/2011  00:45:39  PAGE 4
+
+
+  C:0B11H         LINE#         55
+  C:0B11H         LINE#         57
+  C:0B1FH         LINE#         58
+  C:0B21H         LINE#         59
+  C:0B2FH         LINE#         60
+  C:0B31H         LINE#         61
+  C:0B34H         LINE#         62
+  C:0B37H         LINE#         63
+  C:0B3AH         LINE#         65
+  C:0B3CH         LINE#         66
+  C:0B3EH         LINE#         67
+  C:0B40H         LINE#         68
+  C:0B42H         LINE#         70
+  -------         ENDPROC       _SEND_DATA_SLAVE
+  -------         PROC          MAIN
+  -------         DO            
+  X:0000H         SYMBOL        Dat1
+  D:0008H         SYMBOL        pa
+  D:000BH         SYMBOL        pb
+  D:000EH         SYMBOL        count
+  D:0010H         SYMBOL        FE
+  D:0012H         SYMBOL        i
+  -------         ENDDO         
+  C:0800H         LINE#         75
+  C:0800H         LINE#         83
+  C:0803H         LINE#         86
+  C:080CH         LINE#         87
+  C:0811H         LINE#         88
+  C:081EH         LINE#         89
+  C:0831H         LINE#         90
+  C:0840H         LINE#         91
+  C:0853H         LINE#         92
+  C:0860H         LINE#         93
+  C:0868H         LINE#         94
+  C:0873H         LINE#         95
+  C:0875H         LINE#         98
+  C:0888H         LINE#         99
+  C:0895H         LINE#         100
+  C:08A8H         LINE#         103
+  C:08B1H         LINE#         104
+  C:08B6H         LINE#         105
+  C:08C3H         LINE#         106
+  C:08D6H         LINE#         107
+  C:08E4H         LINE#         108
+  C:08F7H         LINE#         109
+  C:08FCH         LINE#         110
+  C:090FH         LINE#         111
+  C:0916H         LINE#         112
+  C:0929H         LINE#         113
+  C:0931H         LINE#         114
+  C:093CH         LINE#         115
+  C:093FH         LINE#         117
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        SORTSLAVE
+
+  -------         MODULE        ?C?ILDPTR
+  C:0A18H         PUBLIC        ?C?ILDPTR
+  -------         ENDMOD        ?C?ILDPTR
+
+  -------         MODULE        ?C?ILDOPTR
+  C:0A43H         PUBLIC        ?C?ILDOPTR
+  -------         ENDMOD        ?C?ILDOPTR
+
+  -------         MODULE        ?C?ISTPTR
+  C:0A7BH         PUBLIC        ?C?ISTPTR
+BL51 BANKED LINKER/LOCATER V6.05            12/05/2011  00:45:39  PAGE 5
+
+
+  -------         ENDMOD        ?C?ISTPTR
+
+  -------         MODULE        ?C?ISTOPTR
+  C:0A9AH         PUBLIC        ?C?ISTOPTR
+  -------         ENDMOD        ?C?ISTOPTR
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_CONTROLWRITE?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_CONTROLREAD?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_LCD_DATAWRITE?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LCD_DATAREAD?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SCOPESAMPLEWRITE?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SCOPECLEARBUFFER?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?TERMINALREAD?TS_VINTERFACE
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?LIB_VERSIONREAD?TS_VINTERFACE
+
+******************************************************************************
+>> 
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 0289H BYTE (31%) *
+>> 
+******************************************************************************
+>> 
+
+Program Size: data=29.0 xdata=200 code=1037
+LINK/LOCATE RUN COMPLETE.  8 WARNING(S),  0 ERROR(S)
